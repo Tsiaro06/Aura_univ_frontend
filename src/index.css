@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Lumen — University Student Management Design System
+   Inspired by Linear & Notion. All colors HSL.
+*/
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 30 20% 98.5%;            /* warm off-white */
+    --foreground: 222 25% 14%;
+    --surface: 0 0% 100%;
+    --surface-elevated: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 25% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 25% 14%;
+
+    /* Brand — soft indigo/blue */
+    --primary: 230 65% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 230 90% 70%;
+    --primary-soft: 230 80% 96%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 222 25% 20%;
+
+    --muted: 220 16% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 230 80% 96%;
+    --accent-foreground: 230 65% 40%;
+
+    --success: 152 55% 42%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 152 60% 95%;
+
+    --warning: 35 92% 55%;
+    --warning-foreground: 0 0% 100%;
+    --warning-soft: 38 100% 95%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-soft: 0 80% 96%;
+
+    --border: 220 16% 91%;
+    --input: 220 16% 91%;
+    --ring: 230 65% 56%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(230 80% 65%), hsl(260 70% 65%));
+    --gradient-soft: linear-gradient(180deg, hsl(230 80% 98%), hsl(0 0% 100%));
+    --gradient-hero: radial-gradient(circle at 20% 0%, hsl(230 90% 95%) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, hsl(260 80% 96%) 0%, transparent 50%),
+                     hsl(30 20% 98.5%);
+    --gradient-success: linear-gradient(135deg, hsl(152 55% 55%), hsl(170 60% 50%));
+
+    /* Shadows — soft & diffused */
+    --shadow-xs: 0 1px 2px 0 hsl(220 30% 20% / 0.04);
+    --shadow-sm: 0 1px 3px 0 hsl(220 30% 20% / 0.05), 0 1px 2px -1px hsl(220 30% 20% / 0.04);
+    --shadow-md: 0 4px 12px -2px hsl(220 30% 20% / 0.06), 0 2px 4px -2px hsl(220 30% 20% / 0.04);
+    --shadow-lg: 0 12px 32px -8px hsl(220 30% 20% / 0.10), 0 4px 8px -4px hsl(220 30% 20% / 0.05);
+    --shadow-glow: 0 0 0 4px hsl(230 65% 56% / 0.10), 0 8px 24px -8px hsl(230 65% 56% / 0.35);
+
+    /* Glass */
+    --glass-bg: 0 0% 100% / 0.65;
+    --glass-border: 220 30% 90% / 0.6;
+
+    /* Transitions */
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Sidebar */
+    --sidebar-background: 30 20% 98.5%;
+    --sidebar-foreground: 222 20% 30%;
+    --sidebar-primary: 230 65% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 80% 96%;
+    --sidebar-accent-foreground: 230 65% 40%;
+    --sidebar-border: 220 16% 91%;
+    --sidebar-ring: 230 65% 56%;
+  }
+
+  .dark {
+    --background: 222 25% 8%;
+    --foreground: 210 20% 96%;
+    --card: 222 25% 10%;
+    --card-foreground: 210 20% 96%;
+    --popover: 222 25% 10%;
+    --popover-foreground: 210 20% 96%;
+    --primary: 230 80% 70%;
+    --primary-foreground: 222 25% 8%;
+    --secondary: 222 20% 14%;
+    --secondary-foreground: 210 20% 96%;
+    --muted: 222 20% 14%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 222 20% 14%;
+    --accent-foreground: 230 80% 70%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 20% 96%;
+    --border: 222 20% 18%;
+    --input: 222 20% 18%;
+    --ring: 230 80% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    background-image:
+      radial-gradient(at 100% 0%, hsl(230 80% 96% / 0.6) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(260 70% 96% / 0.4) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* Subtle noise overlay for premium feel */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .card-elevated {
+    @apply bg-card border border-border/70 rounded-xl;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .focus-ring {
+    @apply outline-none ring-offset-2 ring-offset-background focus-visible:ring-2 focus-visible:ring-ring;
+  }
+}
